@@ -238,14 +238,15 @@ class Database:
         return TradeLog(self, from_coin, to_coin, selling)
 
     def send_update(self, model):
-        if not self.socketio_connect():
-            return
+        return
+        # if not self.socketio_connect():
+        #     return
 
-        self.socketio_client.emit(
-            "update",
-            {"table": model.__tablename__, "data": model.info()},
-            namespace="/backend",
-        )
+        # self.socketio_client.emit(
+        #     "update",
+        #     {"table": model.__tablename__, "data": model.info()},
+        #     namespace="/backend",
+        # )
 
     def migrate_old_state(self):
         """
